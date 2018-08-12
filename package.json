@@ -1,6 +1,6 @@
 {
-  "name": "image-js",
-  "version": "0.21.0",
+  "name": "vzor-image-js",
+  "version": "0.1.0",
   "description": "Image processing and manipulation in JavaScript",
   "keywords": [
     "image",
@@ -11,19 +11,18 @@
     "hsb",
     "hsl",
     "rgb",
-    "roi",
-    "rois",
     "mask"
   ],
-  "author": "Michaël Zasso",
+  "author": "Aleksei S. Popov <aleksey.s.popov@gmail.com>",
   "contributors": [
-    "Luc Patiny"
+    "Luc Patiny",
+    "Michaël Zasso"
   ],
-  "repository": "image-js/core",
+  "repository": "lexotrion/image-js",
   "bugs": {
-    "url": "https://github.com/image-js/core/issues"
+    "url": "https://github.com/lexotrion/image-js/issues"
   },
-  "homepage": "https://github.com/image-js/core",
+  "homepage": "https://github.com/lexotrion/image-js",
   "license": "MIT",
   "main": "./lib/index.js",
   "module": "./src/index.js",
@@ -70,7 +69,7 @@
     "babel-preset-minify": "^0.4.0",
     "babel-register": "^6.2.0",
     "benchmark": "^2.1.0",
-    "canvas": "^2.0.0-alpha.11",
+    "canvas-prebuilt": "^1.6.0",
     "cross-env": "^5.1.4",
     "documentation": "^8.0.0",
     "eslint": "^5.0.1",
