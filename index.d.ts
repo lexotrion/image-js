@@ -23,9 +23,9 @@ declare class Image {
     constructor(options?: ImageConstructorOptions)
 
     static isImage(object: any): boolean;
-    static fromCanvas(canvas: HTMLCanvasElement): Image;
-    static createFrom(other: Image, options: ImageConstructorOptions);
-    static load(image: (string|ArrayBuffer|Uint8Array), options?: RequestInit)
+    static fromCanvas(canvas: HTMLCanvasElement): Promise<Image>;
+    static createFrom(other: Image, options: ImageConstructorOptions): Promise<Image>;
+    static load(image: (string|ArrayBuffer|Uint8Array), options?: RequestInit):  Promise<Image>;
 
     getRoiManager(): RoiManager;
     clone(): Image;
