@@ -94,9 +94,9 @@ declare class Image {
     // cropAlpha
     resize(options?: {width?: number, height?: number, factor?: number, interpolation?: InterpolationAlgorithm, preserveAspectRatio?: boolean}): Image;
     // hsv
-    // hsl
+    hsl(): Image
     // cmyk
-    // rgba8
+    rgba8(): Image
     grey(options?: {algorithm?: GreyAlgorithm, keepAlpha?: boolean, mergeAlpha?: boolean, out?: Image}): Image;
     mask(options?: {algorithm?: ThresholdAlgorithm|'threshold', threshold?: number, useAlpha?: boolean, invert?: boolean}): Image;
     // pad
@@ -106,8 +106,8 @@ declare class Image {
     rotateLeft(): Image;
     rotateRight(): Image;
 
-    // getRow
-    // getColumn
+    getRow(index:number): Array<number>;
+    getColumn(index:number): Array<number>;
     // getMatrix
     // setMatrix
     // getPixelsArray
@@ -138,9 +138,9 @@ declare class Image {
     // countAlphaPixels
     // monotoneChainConvexHull
     // minimalBoundingRectangle
-    // getHistogram
-    // getHistograms
-    // getColorHistogram
+    getHistogram(options?:Object): Array<number>;
+    getHistograms(options?:Object): Array<Array<number>>;
+    getColorHistogram(options?:Object): Array<number>;
     // getMin
     // getMax
     // getSum
