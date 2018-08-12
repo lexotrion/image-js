@@ -3,7 +3,7 @@
 
 <head>
     <meta charset='utf-8' />
-    <title>vzor-image-js 0.21.0 | Documentation</title>
+    <title>image-js 0.21.0 | Documentation</title>
     <meta name='viewport' content='width=device-width,initial-scale=1'>
     <link href='assets/bass.css' type='text/css' rel='stylesheet' />
     <link href='assets/style.css' type='text/css' rel='stylesheet' />
@@ -15,7 +15,7 @@
     <div class='flex'>
         <div id='split-left' class='overflow-auto fs0 height-viewport-100'>
             <div class='py1 px2'>
-                <h3 class='mb0 no-anchor'>vzor-image-js</h3>
+                <h3 class='mb0 no-anchor'>image-js</h3>
                 <div class='mb1'><code>0.21.0</code></div>
                 <input placeholder='Filter' id='filter-input' class='col12 block input' type='text' />
                 <div id='toc'>
@@ -834,7 +834,7 @@
                     </h3>
 
 
-                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/Image.js#L168-L367'>
+                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/Image.js#L168-L367'>
                         <span>src/image/Image.js</span>
                     </a>
 
@@ -851,7 +851,7 @@
                     <li>alpha: 0 or 1 depending if there is an alpha channel. The alpha channel define the opacity of each pixel</li>
                     <li>channels: number of channels (components + alpha)</li>
                     <li>bitDepth : number of bits to define the intensity of a point. The values may be 1 for a binary image (mask), 8 for a normal image (each channel contains values between 0 and 255) and 16 for scientific images (each channel contains
-                        values between 0 and 65535). The png library and tiff library included in vzor-image-js allow to deal correctly with 8 and 16 bit depth images.</li>
+                        values between 0 and 65535). The png library and tiff library included in image-js allow to deal correctly with 8 and 16 bit depth images.</li>
                     <li>position : an array of 2 elements that allows to define a relative position to a parent image. This will be used in a crop or in the management of Region Of Interests (Roi) for exmaple</li>
                     <li>data : an array that contains all the points of the image. Depending the bitDepth Uint8Array (1 bit), Uint8Array (8 bits), Uint16Array (16 bits), Float32Array (32 bits)</li>
                 </ul>
@@ -926,8 +926,8 @@
 
 
                 <pre class='p1 overflow-auto round fill-light'><span class="hljs-comment">// JavaScript code using Node.js to get some info about the image.</span>
-<span class="hljs-comment">// We load the library that was installed using 'npm install vzor-image-js'</span>
-<span class="hljs-keyword">const</span> { Image } = <span class="hljs-built_in">require</span>(<span class="hljs-string">'vzor-image-js'</span>);
+<span class="hljs-comment">// We load the library that was installed using 'npm install image-js'</span>
+<span class="hljs-keyword">const</span> { Image } = <span class="hljs-built_in">require</span>(<span class="hljs-string">'image-js'</span>);
 
 <span class="hljs-comment">// Loading an image is asynchronous and will return a Promise.</span>
 Image.load(<span class="hljs-string">'cat.jpg'</span>).then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">image</span>) </span>{
@@ -942,7 +942,7 @@ Image.load(<span class="hljs-string">'cat.jpg'</span>).then(<span class="hljs-fu
 
 
                 <pre class='p1 overflow-auto round fill-light'><span class="hljs-comment">// Convert an image to greyscale</span>
-<span class="hljs-keyword">const</span> { Image } = <span class="hljs-built_in">require</span>(<span class="hljs-string">'vzor-image-js'</span>);
+<span class="hljs-keyword">const</span> { Image } = <span class="hljs-built_in">require</span>(<span class="hljs-string">'image-js'</span>);
 
 Image.load(<span class="hljs-string">'cat.jpg'</span>).then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">image</span>) </span>{
   <span class="hljs-keyword">var</span> grey = image.grey();
@@ -951,7 +951,7 @@ Image.load(<span class="hljs-string">'cat.jpg'</span>).then(<span class="hljs-fu
 
 
                 <pre class='p1 overflow-auto round fill-light'><span class="hljs-comment">// Split an RGB image in its components</span>
-<span class="hljs-keyword">const</span> { Image } = <span class="hljs-built_in">require</span>(<span class="hljs-string">'vzor-image-js'</span>);
+<span class="hljs-keyword">const</span> { Image } = <span class="hljs-built_in">require</span>(<span class="hljs-string">'image-js'</span>);
 
 Image.load(<span class="hljs-string">'cat.jpg'</span>).then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">image</span>) </span>{
   <span class="hljs-keyword">var</span> components = image.split();
@@ -962,11 +962,11 @@ Image.load(<span class="hljs-string">'cat.jpg'</span>).then(<span class="hljs-fu
 
 
                 <pre class='p1 overflow-auto round fill-light'><span class="hljs-comment">// For this example you will need the picture of an ecstasy pill that is available on</span>
-<span class="hljs-comment">// wget https://raw.githubusercontent.com/vzor-image-js/core/854e70f50d63cc73d2dde1d2020fe61ba1b5ec05/test/img/xtc.png // the goal is to isolate the picture and to get a RGB histogram of the pill.</span>
+<span class="hljs-comment">// wget https://raw.githubusercontent.com/image-js/core/854e70f50d63cc73d2dde1d2020fe61ba1b5ec05/test/img/xtc.png // the goal is to isolate the picture and to get a RGB histogram of the pill.</span>
 <span class="hljs-comment">// Practically this allows to classify pills based on the histogram similarity</span>
 <span class="hljs-comment">// This work was published at: http://dx.doi.org/10.1016/j.forsciint.2012.10.004</span>
 
-<span class="hljs-keyword">const</span> { Image } = <span class="hljs-built_in">require</span>(<span class="hljs-string">'vzor-image-js'</span>);
+<span class="hljs-keyword">const</span> { Image } = <span class="hljs-built_in">require</span>(<span class="hljs-string">'image-js'</span>);
 
 <span class="hljs-keyword">const</span> image = <span class="hljs-keyword">await</span> Image.load(<span class="hljs-string">'xtc.png'</span>);
 
@@ -1009,7 +1009,7 @@ rois.sort(<span class="hljs-function">(<span class="hljs-params">a, b</span>) =&
   <span class="hljs-attr">scale</span>: <span class="hljs-number">0.7</span>   <span class="hljs-comment">// we will scale down the mask to take just the center of the pill and avoid border effects</span>
 });
 
-<span class="hljs-comment">// vzor-image-js remembers the parent of the image and the relative</span>
+<span class="hljs-comment">// image-js remembers the parent of the image and the relative</span>
 <span class="hljs-comment">// position of a derived image. This is the case for a crop as</span>
 <span class="hljs-comment">// well as for Roi</span>
 
@@ -1048,7 +1048,7 @@ pill.save(<span class="hljs-string">'pill.jpg'</span>);
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/Image.js#L331-L338'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/Image.js#L331-L338'>
                                         <span>src/image/Image.js</span>
                                     </a>
 
@@ -1138,7 +1138,7 @@ pill.save(<span class="hljs-string">'pill.jpg'</span>);
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/Image.js#L317-L321'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/Image.js#L317-L321'>
                                         <span>src/image/Image.js</span>
                                     </a>
 
@@ -1214,7 +1214,7 @@ pill.save(<span class="hljs-string">'pill.jpg'</span>);
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/core/load.js#L27-L37'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/core/load.js#L27-L37'>
                                         <span>src/image/core/load.js</span>
                                     </a>
 
@@ -1315,7 +1315,7 @@ pill.save(<span class="hljs-string">'pill.jpg'</span>);
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/filter/abs.js#L13-L20'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/filter/abs.js#L13-L20'>
                                         <span>src/image/filter/abs.js</span>
                                     </a>
 
@@ -1424,7 +1424,7 @@ pill.save(<span class="hljs-string">'pill.jpg'</span>);
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/filter/add.js#L12-L42'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/filter/add.js#L12-L42'>
                                         <span>src/image/filter/add.js</span>
                                     </a>
 
@@ -1508,7 +1508,7 @@ pill.save(<span class="hljs-string">'pill.jpg'</span>);
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/Image.js#L255-L255'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/Image.js#L255-L255'>
                                         <span>src/image/Image.js</span>
                                     </a>
 
@@ -1568,7 +1568,7 @@ pill.save(<span class="hljs-string">'pill.jpg'</span>);
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/filter/background.js#L13-L27'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/filter/background.js#L13-L27'>
                                         <span>src/image/filter/background.js</span>
                                     </a>
 
@@ -1663,7 +1663,7 @@ pill.save(<span class="hljs-string">'pill.jpg'</span>);
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/Image.js#L261-L261'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/Image.js#L261-L261'>
                                         <span>src/image/Image.js</span>
                                     </a>
 
@@ -1723,7 +1723,7 @@ pill.save(<span class="hljs-string">'pill.jpg'</span>);
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/morphology/blackHat.js#L16-L37'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/morphology/blackHat.js#L16-L37'>
                                         <span>src/image/morphology/blackHat.js</span>
                                     </a>
 
@@ -1849,7 +1849,7 @@ pill.save(<span class="hljs-string">'pill.jpg'</span>);
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/filter/blurFilter.js#L9-L30'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/filter/blurFilter.js#L9-L30'>
                                         <span>src/image/filter/blurFilter.js</span>
                                     </a>
 
@@ -1951,7 +1951,7 @@ pill.save(<span class="hljs-string">'pill.jpg'</span>);
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/operator/cannyEdge.js#L9-L11'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/operator/cannyEdge.js#L9-L11'>
                                         <span>src/image/operator/cannyEdge.js</span>
                                     </a>
 
@@ -2026,7 +2026,7 @@ pill.save(<span class="hljs-string">'pill.jpg'</span>);
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/Image.js#L279-L279'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/Image.js#L279-L279'>
                                         <span>src/image/Image.js</span>
                                     </a>
 
@@ -2086,7 +2086,7 @@ pill.save(<span class="hljs-string">'pill.jpg'</span>);
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/core/checkProcessable.js#L8-L58'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/core/checkProcessable.js#L8-L58'>
                                         <span>src/image/core/checkProcessable.js</span>
                                     </a>
 
@@ -2163,7 +2163,7 @@ pill.save(<span class="hljs-string">'pill.jpg'</span>);
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/core/bitMethods.js#L33-L35'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/core/bitMethods.js#L33-L35'>
                                         <span>src/image/core/bitMethods.js</span>
                                     </a>
 
@@ -2232,7 +2232,7 @@ pill.save(<span class="hljs-string">'pill.jpg'</span>);
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/core/bitMethods.js#L80-L82'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/core/bitMethods.js#L80-L82'>
                                         <span>src/image/core/bitMethods.js</span>
                                     </a>
 
@@ -2308,7 +2308,7 @@ pill.save(<span class="hljs-string">'pill.jpg'</span>);
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/Image.js#L354-L357'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/Image.js#L354-L357'>
                                         <span>src/image/Image.js</span>
                                     </a>
 
@@ -2371,7 +2371,7 @@ pill.save(<span class="hljs-string">'pill.jpg'</span>);
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/morphology/close.js#L13-L33'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/morphology/close.js#L13-L33'>
                                         <span>src/image/morphology/close.js</span>
                                     </a>
 
@@ -2496,7 +2496,7 @@ pill.save(<span class="hljs-string">'pill.jpg'</span>);
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/transform/cmyk.js#L18-L52'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/transform/cmyk.js#L18-L52'>
                                         <span>src/image/transform/cmyk.js</span>
                                     </a>
 
@@ -2566,7 +2566,7 @@ pill.save(<span class="hljs-string">'pill.jpg'</span>);
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/transform/colorDepth.js#L15-L61'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/transform/colorDepth.js#L15-L61'>
                                         <span>src/image/transform/colorDepth.js</span>
                                     </a>
 
@@ -2649,7 +2649,7 @@ pill.save(<span class="hljs-string">'pill.jpg'</span>);
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/Image.js#L273-L273'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/Image.js#L273-L273'>
                                         <span>src/image/Image.js</span>
                                     </a>
 
@@ -2709,7 +2709,7 @@ pill.save(<span class="hljs-string">'pill.jpg'</span>);
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/utility/combineChannels.js#L14-L48'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/utility/combineChannels.js#L14-L48'>
                                         <span>src/image/utility/combineChannels.js</span>
                                     </a>
 
@@ -2828,7 +2828,7 @@ pill.save(<span class="hljs-string">'pill.jpg'</span>);
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/Image.js#L249-L249'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/Image.js#L249-L249'>
                                         <span>src/image/Image.js</span>
                                     </a>
 
@@ -2888,7 +2888,7 @@ pill.save(<span class="hljs-string">'pill.jpg'</span>);
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/operator/convolution.js#L26-L151'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/operator/convolution.js#L26-L151'>
                                         <span>src/image/operator/convolution.js</span>
                                     </a>
 
@@ -3044,7 +3044,7 @@ The 'auto' option will try to separate the kernel if that is possible.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/internal/copy.js#L10-L24'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/internal/copy.js#L10-L24'>
                                         <span>src/image/internal/copy.js</span>
                                     </a>
 
@@ -3136,7 +3136,7 @@ The 'auto' option will try to separate the kernel if that is possible.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/compute/countAlphaPixels.js#L9-L31'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/compute/countAlphaPixels.js#L9-L31'>
                                         <span>src/image/compute/countAlphaPixels.js</span>
                                     </a>
 
@@ -3237,7 +3237,7 @@ The 'auto' option will try to separate the kernel if that is possible.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/transform/crop.js#L19-L67'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/transform/crop.js#L19-L67'>
                                         <span>src/image/transform/crop.js</span>
                                     </a>
 
@@ -3374,7 +3374,7 @@ The 'auto' option will try to separate the kernel if that is possible.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/transform/cropAlpha.js#L10-L35'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/transform/cropAlpha.js#L10-L35'>
                                         <span>src/image/transform/cropAlpha.js</span>
                                     </a>
 
@@ -3475,7 +3475,7 @@ The 'auto' option will try to separate the kernel if that is possible.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/Image.js#L236-L236'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/Image.js#L236-L236'>
                                         <span>src/image/Image.js</span>
                                     </a>
 
@@ -3535,7 +3535,7 @@ The 'auto' option will try to separate the kernel if that is possible.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/morphology/dilate.js#L16-L60'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/morphology/dilate.js#L16-L60'>
                                         <span>src/image/morphology/dilate.js</span>
                                     </a>
 
@@ -3661,7 +3661,7 @@ The 'auto' option will try to separate the kernel if that is possible.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/filter/divide.js#L11-L40'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/filter/divide.js#L11-L40'>
                                         <span>src/image/filter/divide.js</span>
                                     </a>
 
@@ -3745,7 +3745,7 @@ The 'auto' option will try to separate the kernel if that is possible.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/morphology/erode.js#L16-L60'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/morphology/erode.js#L16-L60'>
                                         <span>src/image/morphology/erode.js</span>
                                     </a>
 
@@ -3871,7 +3871,7 @@ The 'auto' option will try to separate the kernel if that is possible.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/operator/extract.js#L13-L71'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/operator/extract.js#L13-L71'>
                                         <span>src/image/operator/extract.js</span>
                                     </a>
 
@@ -3980,7 +3980,7 @@ The 'auto' option will try to separate the kernel if that is possible.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/filter/flipX.js#L7-L28'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/filter/flipX.js#L7-L28'>
                                         <span>src/image/filter/flipX.js</span>
                                     </a>
 
@@ -4043,7 +4043,7 @@ The 'auto' option will try to separate the kernel if that is possible.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/filter/flipY.js#L7-L27'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/filter/flipY.js#L7-L27'>
                                         <span>src/image/filter/flipY.js</span>
                                     </a>
 
@@ -4106,7 +4106,7 @@ The 'auto' option will try to separate the kernel if that is possible.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/filter/gaussianFilter.js#L12-L26'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/filter/gaussianFilter.js#L12-L26'>
                                         <span>src/image/filter/gaussianFilter.js</span>
                                     </a>
 
@@ -4234,7 +4234,7 @@ The 'auto' option will try to separate the kernel if that is possible.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/core/bitMethods.js#L11-L13'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/core/bitMethods.js#L11-L13'>
                                         <span>src/image/core/bitMethods.js</span>
                                     </a>
 
@@ -4310,7 +4310,7 @@ The 'auto' option will try to separate the kernel if that is possible.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/core/bitMethods.js#L57-L59'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/core/bitMethods.js#L57-L59'>
                                         <span>src/image/core/bitMethods.js</span>
                                     </a>
 
@@ -4394,7 +4394,7 @@ The 'auto' option will try to separate the kernel if that is possible.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/core/export.js#L211-L217'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/core/export.js#L211-L217'>
                                         <span>src/image/core/export.js</span>
                                     </a>
 
@@ -4457,7 +4457,7 @@ The 'auto' option will try to separate the kernel if that is possible.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/utility/getChannel.js#L15-L48'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/utility/getChannel.js#L15-L48'>
                                         <span>src/image/utility/getChannel.js</span>
                                     </a>
 
@@ -4574,7 +4574,7 @@ The 'auto' option will try to separate the kernel if that is possible.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/utility/getClosestCommonParent.js#L8-L59'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/utility/getClosestCommonParent.js#L8-L59'>
                                         <span>src/image/utility/getClosestCommonParent.js</span>
                                     </a>
 
@@ -4649,7 +4649,7 @@ The 'auto' option will try to separate the kernel if that is possible.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/compute/colorHistogram.js#L11-L47'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/compute/colorHistogram.js#L11-L47'>
                                         <span>src/image/compute/colorHistogram.js</span>
                                     </a>
 
@@ -4758,7 +4758,7 @@ The 'auto' option will try to separate the kernel if that is possible.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/utility/getColumn.js#L10-L25'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/utility/getColumn.js#L10-L25'>
                                         <span>src/image/utility/getColumn.js</span>
                                     </a>
 
@@ -4843,7 +4843,7 @@ The 'auto' option will try to separate the kernel if that is possible.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/compute/histogram.js#L14-L26'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/compute/histogram.js#L14-L26'>
                                         <span>src/image/compute/histogram.js</span>
                                     </a>
 
@@ -4961,7 +4961,7 @@ The 'auto' option will try to separate the kernel if that is possible.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/compute/histogram.js#L47-L57'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/compute/histogram.js#L47-L57'>
                                         <span>src/image/compute/histogram.js</span>
                                     </a>
 
@@ -5077,7 +5077,7 @@ placed in the slot 0, 32 to 63 in slot 1, ...
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/utility/getIntersection.js#L8-L57'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/utility/getIntersection.js#L8-L57'>
                                         <span>src/image/utility/getIntersection.js</span>
                                     </a>
 
@@ -5152,7 +5152,7 @@ placed in the slot 0, 32 to 63 in slot 1, ...
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/utility/getMatrix.js#L10-L31'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/utility/getMatrix.js#L10-L31'>
                                         <span>src/image/utility/getMatrix.js</span>
                                     </a>
 
@@ -5252,7 +5252,7 @@ placed in the slot 0, 32 to 63 in slot 1, ...
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/compute/moment.js#L9-L24'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/compute/moment.js#L9-L24'>
                                         <span>src/image/compute/moment.js</span>
                                     </a>
 
@@ -5339,7 +5339,7 @@ placed in the slot 0, 32 to 63 in slot 1, ...
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/core/valueMethods.js#L90-L97'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/core/valueMethods.js#L90-L97'>
                                         <span>src/image/core/valueMethods.js</span>
                                     </a>
 
@@ -5416,7 +5416,7 @@ placed in the slot 0, 32 to 63 in slot 1, ...
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/utility/getPixelsArray.js#L8-L24'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/utility/getPixelsArray.js#L8-L24'>
                                         <span>src/image/utility/getPixelsArray.js</span>
                                     </a>
 
@@ -5480,7 +5480,7 @@ placed in the slot 0, 32 to 63 in slot 1, ...
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/utility/getPixelsGrid.js#L10-L64'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/utility/getPixelsGrid.js#L10-L64'>
                                         <span>src/image/utility/getPixelsGrid.js</span>
                                     </a>
 
@@ -5596,7 +5596,7 @@ placed in the slot 0, 32 to 63 in slot 1, ...
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/core/valueMethods.js#L66-L68'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/core/valueMethods.js#L66-L68'>
                                         <span>src/image/core/valueMethods.js</span>
                                     </a>
 
@@ -5681,7 +5681,7 @@ placed in the slot 0, 32 to 63 in slot 1, ...
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/compute/relativePosition.js#L18-L40'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/compute/relativePosition.js#L18-L40'>
                                         <span>src/image/compute/relativePosition.js</span>
                                     </a>
 
@@ -5794,7 +5794,7 @@ to the further parent
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/core/getRGBAData.js#L15-L48'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/core/getRGBAData.js#L15-L48'>
                                         <span>src/image/core/getRGBAData.js</span>
                                     </a>
 
@@ -5901,7 +5901,7 @@ to the further parent
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/Image.js#L345-L347'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/Image.js#L345-L347'>
                                         <span>src/image/Image.js</span>
                                     </a>
 
@@ -5977,7 +5977,7 @@ to the further parent
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/utility/getRow.js#L10-L28'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/utility/getRow.js#L10-L28'>
                                         <span>src/image/utility/getRow.js</span>
                                     </a>
 
@@ -6062,7 +6062,7 @@ to the further parent
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/utility/getSimilarity.js#L13-L74'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/utility/getSimilarity.js#L13-L74'>
                                         <span>src/image/utility/getSimilarity.js</span>
                                     </a>
 
@@ -6148,7 +6148,7 @@ to the further parent
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/compute/svd.js#L9-L15'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/compute/svd.js#L9-L15'>
                                         <span>src/image/compute/svd.js</span>
                                     </a>
 
@@ -6210,7 +6210,7 @@ to the further parent
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/utility/getThreshold.js#L11-L28'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/utility/getThreshold.js#L11-L28'>
                                         <span>src/image/utility/getThreshold.js</span>
                                     </a>
 
@@ -6311,7 +6311,7 @@ to the further parent
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/core/valueMethods.js#L39-L41'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/core/valueMethods.js#L39-L41'>
                                         <span>src/image/core/valueMethods.js</span>
                                     </a>
 
@@ -6395,7 +6395,7 @@ to the further parent
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/core/valueMethods.js#L11-L13'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/core/valueMethods.js#L11-L13'>
                                         <span>src/image/core/valueMethods.js</span>
                                     </a>
 
@@ -6487,7 +6487,7 @@ to the further parent
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/filter/gradientFilter.js#L20-L68'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/filter/gradientFilter.js#L20-L68'>
                                         <span>src/image/filter/gradientFilter.js</span>
                                     </a>
 
@@ -6628,7 +6628,7 @@ to the further parent
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/transform/grey.js#L23-L69'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/transform/grey.js#L23-L69'>
                                         <span>src/image/transform/grey.js</span>
                                     </a>
 
@@ -6761,7 +6761,7 @@ separately from the alpha channel and the method returns a GREYA image.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/Image.js#L230-L230'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/Image.js#L230-L230'>
                                         <span>src/image/Image.js</span>
                                     </a>
 
@@ -6821,7 +6821,7 @@ separately from the alpha channel and the method returns a GREYA image.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/transform/hsl.js#L18-L70'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/transform/hsl.js#L18-L70'>
                                         <span>src/image/transform/hsl.js</span>
                                     </a>
 
@@ -6891,7 +6891,7 @@ separately from the alpha channel and the method returns a GREYA image.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/transform/hsv.js#L17-L68'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/transform/hsv.js#L17-L68'>
                                         <span>src/image/transform/hsv.js</span>
                                     </a>
 
@@ -6961,7 +6961,7 @@ separately from the alpha channel and the method returns a GREYA image.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/filter/hypotenuse.js#L14-L48'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/filter/hypotenuse.js#L14-L48'>
                                         <span>src/image/filter/hypotenuse.js</span>
                                     </a>
 
@@ -7079,7 +7079,7 @@ separately from the alpha channel and the method returns a GREYA image.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/transform/insert.js#L15-L45'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/transform/insert.js#L15-L45'>
                                         <span>src/image/transform/insert.js</span>
                                     </a>
 
@@ -7206,7 +7206,7 @@ separately from the alpha channel and the method returns a GREYA image.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/filter/invert.js#L13-L29'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/filter/invert.js#L13-L29'>
                                         <span>src/image/filter/invert.js</span>
                                     </a>
 
@@ -7315,7 +7315,7 @@ separately from the alpha channel and the method returns a GREYA image.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/filter/level.js#L16-L66'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/filter/level.js#L16-L66'>
                                         <span>src/image/filter/level.js</span>
                                     </a>
 
@@ -7443,7 +7443,7 @@ separately from the alpha channel and the method returns a GREYA image.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/compute/localMaxima.js#L14-L81'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/compute/localMaxima.js#L14-L81'>
                                         <span>src/image/compute/localMaxima.js</span>
                                     </a>
 
@@ -7583,7 +7583,7 @@ the 8 points around and 3 to the 12 points around the central pixel.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/transform/mask/mask.js#L19-L62'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/transform/mask/mask.js#L19-L62'>
                                         <span>src/image/transform/mask/mask.js</span>
                                     </a>
 
@@ -7712,7 +7712,7 @@ the 8 points around and 3 to the 12 points around the central pixel.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/utility/getBestMatch.js#L11-L55'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/utility/getBestMatch.js#L11-L55'>
                                         <span>src/image/utility/getBestMatch.js</span>
                                     </a>
 
@@ -7798,7 +7798,7 @@ the 8 points around and 3 to the 12 points around the central pixel.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/compute/max.js#L9-L24'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/compute/max.js#L9-L24'>
                                         <span>src/image/compute/max.js</span>
                                     </a>
 
@@ -7861,7 +7861,7 @@ the 8 points around and 3 to the 12 points around the central pixel.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/Image.js#L267-L267'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/Image.js#L267-L267'>
                                         <span>src/image/Image.js</span>
                                     </a>
 
@@ -7921,7 +7921,7 @@ the 8 points around and 3 to the 12 points around the central pixel.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/compute/mean.js#L10-L18'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/compute/mean.js#L10-L18'>
                                         <span>src/image/compute/mean.js</span>
                                     </a>
 
@@ -7984,7 +7984,7 @@ the 8 points around and 3 to the 12 points around the central pixel.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/compute/median.js#L9-L17'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/compute/median.js#L9-L17'>
                                         <span>src/image/compute/median.js</span>
                                     </a>
 
@@ -8047,7 +8047,7 @@ the 8 points around and 3 to the 12 points around the central pixel.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/filter/medianFilter.js#L16-L68'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/filter/medianFilter.js#L16-L68'>
                                         <span>src/image/filter/medianFilter.js</span>
                                     </a>
 
@@ -8167,7 +8167,7 @@ the 8 points around and 3 to the 12 points around the central pixel.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/Image.js#L285-L285'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/Image.js#L285-L285'>
                                         <span>src/image/Image.js</span>
                                     </a>
 
@@ -8227,7 +8227,7 @@ the 8 points around and 3 to the 12 points around the central pixel.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/compute/min.js#L9-L24'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/compute/min.js#L9-L24'>
                                         <span>src/image/compute/min.js</span>
                                     </a>
 
@@ -8290,7 +8290,7 @@ the 8 points around and 3 to the 12 points around the central pixel.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/compute/minimalBoundingRectangle.js#L18-L88'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/compute/minimalBoundingRectangle.js#L18-L88'>
                                         <span>src/image/compute/minimalBoundingRectangle.js</span>
                                     </a>
 
@@ -8393,7 +8393,7 @@ the 8 points around and 3 to the 12 points around the central pixel.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/compute/monotoneChainConvexHull.js#L9-L16'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/compute/monotoneChainConvexHull.js#L9-L16'>
                                         <span>src/image/compute/monotoneChainConvexHull.js</span>
                                     </a>
 
@@ -8457,7 +8457,7 @@ the 8 points around and 3 to the 12 points around the central pixel.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/morphology/morphologicalGradient.js#L11-L34'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/morphology/morphologicalGradient.js#L11-L34'>
                                         <span>src/image/morphology/morphologicalGradient.js</span>
                                     </a>
 
@@ -8582,7 +8582,7 @@ the 8 points around and 3 to the 12 points around the central pixel.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/filter/multiply.js#L11-L43'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/filter/multiply.js#L11-L43'>
                                         <span>src/image/filter/multiply.js</span>
                                     </a>
 
@@ -8666,7 +8666,7 @@ the 8 points around and 3 to the 12 points around the central pixel.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/morphology/open.js#L14-L35'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/morphology/open.js#L14-L35'>
                                         <span>src/image/morphology/open.js</span>
                                     </a>
 
@@ -8792,7 +8792,7 @@ the 8 points around and 3 to the 12 points around the central pixel.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/transform/pad.js#L15-L79'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/transform/pad.js#L15-L79'>
                                         <span>src/image/transform/pad.js</span>
                                     </a>
 
@@ -8908,7 +8908,7 @@ the 8 points around and 3 to the 12 points around the central pixel.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/operator/paintLabels.js#L18-L80'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/operator/paintLabels.js#L18-L80'>
                                         <span>src/image/operator/paintLabels.js</span>
                                     </a>
 
@@ -9054,7 +9054,7 @@ the 8 points around and 3 to the 12 points around the central pixel.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/operator/paintMasks.js#L22-L77'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/operator/paintMasks.js#L22-L77'>
                                         <span>src/image/operator/paintMasks.js</span>
                                     </a>
 
@@ -9242,7 +9242,7 @@ By default it is the 0,0 position of the correesponding mask.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/operator/paintPoints.js#L17-L54'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/operator/paintPoints.js#L17-L54'>
                                         <span>src/image/operator/paintPoints.js</span>
                                     </a>
 
@@ -9390,7 +9390,7 @@ By default it is the 0,0 position of the correesponding mask.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/operator/paintPolygon.js#L51-L97'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/operator/paintPolygon.js#L51-L97'>
                                         <span>src/image/operator/paintPolygon.js</span>
                                     </a>
 
@@ -9511,7 +9511,7 @@ By default it is the 0,0 position of the correesponding mask.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/operator/paintPolygons.js#L16-L32'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/operator/paintPolygons.js#L16-L32'>
                                         <span>src/image/operator/paintPolygons.js</span>
                                     </a>
 
@@ -9659,7 +9659,7 @@ By default it is the 0,0 position of the correesponding mask.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/operator/paintPolyline.js#L12-L60'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/operator/paintPolyline.js#L12-L60'>
                                         <span>src/image/operator/paintPolyline.js</span>
                                     </a>
 
@@ -9780,7 +9780,7 @@ By default it is the 0,0 position of the correesponding mask.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/operator/paintPolylines.js#L16-L32'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/operator/paintPolylines.js#L16-L32'>
                                         <span>src/image/operator/paintPolylines.js</span>
                                     </a>
 
@@ -9928,7 +9928,7 @@ By default it is the 0,0 position of the correesponding mask.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/compute/points.js#L7-L23'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/compute/points.js#L7-L23'>
                                         <span>src/image/compute/points.js</span>
                                     </a>
 
@@ -9992,7 +9992,7 @@ By default it is the 0,0 position of the correesponding mask.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/transform/resize/resize.js#L19-L67'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/transform/resize/resize.js#L19-L67'>
                                         <span>src/image/transform/resize/resize.js</span>
                                     </a>
 
@@ -10130,7 +10130,7 @@ By default it is the 0,0 position of the correesponding mask.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/transform/rgba8.js#L20-L25'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/transform/rgba8.js#L20-L25'>
                                         <span>src/image/transform/rgba8.js</span>
                                     </a>
 
@@ -10205,7 +10205,7 @@ By default it is the 0,0 position of the correesponding mask.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/transform/rotate.js#L14-L35'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/transform/rotate.js#L14-L35'>
                                         <span>src/image/transform/rotate.js</span>
                                     </a>
 
@@ -10316,7 +10316,7 @@ By default it is the 0,0 position of the correesponding mask.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/transform/rotate.js#L43-L54'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/transform/rotate.js#L43-L54'>
                                         <span>src/image/transform/rotate.js</span>
                                     </a>
 
@@ -10378,7 +10378,7 @@ By default it is the 0,0 position of the correesponding mask.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/transform/rotate.js#L63-L74'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/transform/rotate.js#L63-L74'>
                                         <span>src/image/transform/rotate.js</span>
                                     </a>
 
@@ -10440,7 +10440,7 @@ By default it is the 0,0 position of the correesponding mask.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/core/export.js#L52-L109'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/core/export.js#L52-L109'>
                                         <span>src/image/core/export.js</span>
                                     </a>
 
@@ -10568,7 +10568,7 @@ By default it is the 0,0 position of the correesponding mask.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/filter/scharrFilter.js#L17-L22'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/filter/scharrFilter.js#L17-L22'>
                                         <span>src/image/filter/scharrFilter.js</span>
                                     </a>
 
@@ -10693,7 +10693,7 @@ By default it is the 0,0 position of the correesponding mask.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/core/bitMethods.js#L22-L24'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/core/bitMethods.js#L22-L24'>
                                         <span>src/image/core/bitMethods.js</span>
                                     </a>
 
@@ -10762,7 +10762,7 @@ By default it is the 0,0 position of the correesponding mask.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/core/bitMethods.js#L69-L71'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/core/bitMethods.js#L69-L71'>
                                         <span>src/image/core/bitMethods.js</span>
                                     </a>
 
@@ -10838,7 +10838,7 @@ By default it is the 0,0 position of the correesponding mask.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/utility/setBorder.js#L13-L74'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/utility/setBorder.js#L13-L74'>
                                         <span>src/image/utility/setBorder.js</span>
                                     </a>
 
@@ -10955,7 +10955,7 @@ By default it is the 0,0 position of the correesponding mask.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/utility/setChannel.js#L11-L35'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/utility/setChannel.js#L11-L35'>
                                         <span>src/image/utility/setChannel.js</span>
                                     </a>
 
@@ -11038,7 +11038,7 @@ By default it is the 0,0 position of the correesponding mask.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/utility/setMatrix.js#L9-L31'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/utility/setMatrix.js#L9-L31'>
                                         <span>src/image/utility/setMatrix.js</span>
                                     </a>
 
@@ -11139,7 +11139,7 @@ By default it is the 0,0 position of the correesponding mask.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/core/valueMethods.js#L107-L114'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/core/valueMethods.js#L107-L114'>
                                         <span>src/image/core/valueMethods.js</span>
                                     </a>
 
@@ -11224,7 +11224,7 @@ By default it is the 0,0 position of the correesponding mask.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/core/valueMethods.js#L79-L81'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/core/valueMethods.js#L79-L81'>
                                         <span>src/image/core/valueMethods.js</span>
                                     </a>
 
@@ -11319,7 +11319,7 @@ By default it is the 0,0 position of the correesponding mask.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/core/valueMethods.js#L52-L56'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/core/valueMethods.js#L52-L56'>
                                         <span>src/image/core/valueMethods.js</span>
                                     </a>
 
@@ -11412,7 +11412,7 @@ By default it is the 0,0 position of the correesponding mask.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/core/valueMethods.js#L25-L29'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/core/valueMethods.js#L25-L29'>
                                         <span>src/image/core/valueMethods.js</span>
                                     </a>
 
@@ -11515,7 +11515,7 @@ By default it is the 0,0 position of the correesponding mask.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/Image.js#L242-L242'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/Image.js#L242-L242'>
                                         <span>src/image/Image.js</span>
                                     </a>
 
@@ -11575,7 +11575,7 @@ By default it is the 0,0 position of the correesponding mask.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/filter/sobelFilter.js#L17-L22'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/filter/sobelFilter.js#L17-L22'>
                                         <span>src/image/filter/sobelFilter.js</span>
                                     </a>
 
@@ -11700,7 +11700,7 @@ By default it is the 0,0 position of the correesponding mask.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/utility/split.js#L12-L59'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/utility/split.js#L12-L59'>
                                         <span>src/image/utility/split.js</span>
                                     </a>
 
@@ -11800,7 +11800,7 @@ By default it is the 0,0 position of the correesponding mask.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/filter/subtractImage.js#L14-L46'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/filter/subtractImage.js#L14-L46'>
                                         <span>src/image/filter/subtractImage.js</span>
                                     </a>
 
@@ -11918,7 +11918,7 @@ By default it is the 0,0 position of the correesponding mask.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/filter/subtract.js#L11-L40'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/filter/subtract.js#L11-L40'>
                                         <span>src/image/filter/subtract.js</span>
                                     </a>
 
@@ -12002,7 +12002,7 @@ By default it is the 0,0 position of the correesponding mask.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/compute/sum.js#L9-L22'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/compute/sum.js#L9-L22'>
                                         <span>src/image/compute/sum.js</span>
                                     </a>
 
@@ -12065,7 +12065,7 @@ By default it is the 0,0 position of the correesponding mask.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/core/export.js#L181-L190'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/core/export.js#L181-L190'>
                                         <span>src/image/core/export.js</span>
                                     </a>
 
@@ -12155,7 +12155,7 @@ By default it is the 0,0 position of the correesponding mask.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/core/export.js#L201-L203'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/core/export.js#L201-L203'>
                                         <span>src/image/core/export.js</span>
                                     </a>
 
@@ -12244,7 +12244,7 @@ By default it is the 0,0 position of the correesponding mask.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/core/export.js#L155-L171'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/core/export.js#L155-L171'>
                                         <span>src/image/core/export.js</span>
                                     </a>
 
@@ -12354,7 +12354,7 @@ By default it is the 0,0 position of the correesponding mask.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/core/export.js#L121-L144'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/core/export.js#L121-L144'>
                                         <span>src/image/core/export.js</span>
                                     </a>
 
@@ -12477,7 +12477,7 @@ By default it is the 0,0 position of the correesponding mask.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/core/bitMethods.js#L44-L46'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/core/bitMethods.js#L44-L46'>
                                         <span>src/image/core/bitMethods.js</span>
                                     </a>
 
@@ -12546,7 +12546,7 @@ By default it is the 0,0 position of the correesponding mask.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/core/bitMethods.js#L91-L93'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/core/bitMethods.js#L91-L93'>
                                         <span>src/image/core/bitMethods.js</span>
                                     </a>
 
@@ -12622,7 +12622,7 @@ By default it is the 0,0 position of the correesponding mask.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/morphology/topHat.js#L14-L35'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/morphology/topHat.js#L14-L35'>
                                         <span>src/image/morphology/topHat.js</span>
                                     </a>
 
@@ -12748,7 +12748,7 @@ By default it is the 0,0 position of the correesponding mask.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/transform/warping.js#L158-L219'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/transform/warping.js#L158-L219'>
                                         <span>src/image/transform/warping.js</span>
                                     </a>
 
@@ -12867,7 +12867,7 @@ By default it is the 0,0 position of the correesponding mask.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/Image.js#L224-L224'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/Image.js#L224-L224'>
                                         <span>src/image/Image.js</span>
                                     </a>
 
@@ -12933,7 +12933,7 @@ By default it is the 0,0 position of the correesponding mask.
                     </h3>
 
 
-                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/stack/Stack.js#L17-L115'>
+                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/stack/Stack.js#L17-L115'>
                         <span>src/stack/Stack.js</span>
                     </a>
 
@@ -12984,7 +12984,7 @@ By default it is the 0,0 position of the correesponding mask.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/stack/utility/average.js#L8-L29'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/stack/utility/average.js#L8-L29'>
                                         <span>src/stack/utility/average.js</span>
                                     </a>
 
@@ -13046,7 +13046,7 @@ By default it is the 0,0 position of the correesponding mask.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/stack/compute/histogram.js#L7-L20'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/stack/compute/histogram.js#L7-L20'>
                                         <span>src/stack/compute/histogram.js</span>
                                     </a>
 
@@ -13122,7 +13122,7 @@ By default it is the 0,0 position of the correesponding mask.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/stack/compute/histograms.js#L7-L23'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/stack/compute/histograms.js#L7-L23'>
                                         <span>src/stack/compute/histograms.js</span>
                                     </a>
 
@@ -13198,7 +13198,7 @@ By default it is the 0,0 position of the correesponding mask.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/stack/transform/matchAndCrop.js#L18-L96'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/stack/transform/matchAndCrop.js#L18-L96'>
                                         <span>src/stack/transform/matchAndCrop.js</span>
                                     </a>
 
@@ -13310,7 +13310,7 @@ By default it is the 0,0 position of the correesponding mask.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/stack/compute/max.js#L6-L18'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/stack/compute/max.js#L6-L18'>
                                         <span>src/stack/compute/max.js</span>
                                     </a>
 
@@ -13372,7 +13372,7 @@ By default it is the 0,0 position of the correesponding mask.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/stack/compute/median.js#L8-L21'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/stack/compute/median.js#L8-L21'>
                                         <span>src/stack/compute/median.js</span>
                                     </a>
 
@@ -13434,7 +13434,7 @@ By default it is the 0,0 position of the correesponding mask.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/stack/compute/min.js#L6-L18'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/stack/compute/min.js#L6-L18'>
                                         <span>src/stack/compute/min.js</span>
                                     </a>
 
@@ -13502,7 +13502,7 @@ By default it is the 0,0 position of the correesponding mask.
                     </h3>
 
 
-                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/roi/Roi.js#L11-L445'>
+                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/roi/Roi.js#L11-L445'>
                         <span>src/image/roi/Roi.js</span>
                     </a>
 
@@ -13553,7 +13553,7 @@ By default it is the 0,0 position of the correesponding mask.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/roi/Roi.js#L228-L233'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/roi/Roi.js#L228-L233'>
                                         <span>src/image/roi/Roi.js</span>
                                     </a>
 
@@ -13609,7 +13609,7 @@ By default it is the 0,0 position of the correesponding mask.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/roi/Roi.js#L135-L141'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/roi/Roi.js#L135-L141'>
                                         <span>src/image/roi/Roi.js</span>
                                     </a>
 
@@ -13664,7 +13664,7 @@ By default it is the 0,0 position of the correesponding mask.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/roi/Roi.js#L147-L153'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/roi/Roi.js#L147-L153'>
                                         <span>src/image/roi/Roi.js</span>
                                     </a>
 
@@ -13719,7 +13719,7 @@ By default it is the 0,0 position of the correesponding mask.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/roi/Roi.js#L201-L206'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/roi/Roi.js#L201-L206'>
                                         <span>src/image/roi/Roi.js</span>
                                     </a>
 
@@ -13774,7 +13774,7 @@ By default it is the 0,0 position of the correesponding mask.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/roi/Roi.js#L181-L186'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/roi/Roi.js#L181-L186'>
                                         <span>src/image/roi/Roi.js</span>
                                     </a>
 
@@ -13846,7 +13846,7 @@ By default it is the 0,0 position of the correesponding mask.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/roi/Roi.js#L238-L268'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/roi/Roi.js#L238-L268'>
                                         <span>src/image/roi/Roi.js</span>
                                     </a>
 
@@ -13901,7 +13901,7 @@ By default it is the 0,0 position of the correesponding mask.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/roi/Roi.js#L214-L219'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/roi/Roi.js#L214-L219'>
                                         <span>src/image/roi/Roi.js</span>
                                     </a>
 
@@ -13958,7 +13958,7 @@ By default it is the 0,0 position of the correesponding mask.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/roi/Roi.js#L32-L65'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/roi/Roi.js#L32-L65'>
                                         <span>src/image/roi/Roi.js</span>
                                     </a>
 
@@ -14068,7 +14068,7 @@ By default it is the 0,0 position of the correesponding mask.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/roi/Roi.js#L294-L312'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/roi/Roi.js#L294-L312'>
                                         <span>src/image/roi/Roi.js</span>
                                     </a>
 
@@ -14123,7 +14123,7 @@ By default it is the 0,0 position of the correesponding mask.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/roi/Roi.js#L410-L419'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/roi/Roi.js#L410-L419'>
                                         <span>src/image/roi/Roi.js</span>
                                     </a>
 
@@ -14184,7 +14184,7 @@ By default it is the 0,0 position of the correesponding mask.
                     </h3>
 
 
-                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/model/model.js#L1-L4'>
+                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/model/model.js#L1-L4'>
                         <span>src/image/model/model.js</span>
                     </a>
 
@@ -14240,7 +14240,7 @@ By default it is the 0,0 position of the correesponding mask.
                     </h3>
 
 
-                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/roi/manager.js#L19-L326'>
+                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/roi/manager.js#L19-L326'>
                         <span>src/image/roi/manager.js</span>
                     </a>
 
@@ -14312,7 +14312,7 @@ By default it is the 0,0 position of the correesponding mask.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/roi/manager.js#L106-L108'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/roi/manager.js#L106-L108'>
                                         <span>src/image/roi/manager.js</span>
                                     </a>
 
@@ -14390,7 +14390,7 @@ By default it is the 0,0 position of the correesponding mask.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/roi/RoiLayer.js#L31-L89'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/roi/RoiLayer.js#L31-L89'>
                                         <span>src/image/roi/RoiLayer.js</span>
                                     </a>
 
@@ -14453,7 +14453,7 @@ By default it is the 0,0 position of the correesponding mask.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/roi/manager.js#L305-L318'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/roi/manager.js#L305-L318'>
                                         <span>src/image/roi/manager.js</span>
                                     </a>
 
@@ -14538,7 +14538,7 @@ By default it is the 0,0 position of the correesponding mask.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/roi/creator/fromMask.js#L10-L127'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/roi/creator/fromMask.js#L10-L127'>
                                         <span>src/image/roi/creator/fromMask.js</span>
                                     </a>
 
@@ -14622,7 +14622,7 @@ By default it is the 0,0 position of the correesponding mask.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/roi/creator/fromMaxima.js#L12-L197'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/roi/creator/fromMaxima.js#L12-L197'>
                                         <span>src/image/roi/creator/fromMaxima.js</span>
                                     </a>
 
@@ -14738,7 +14738,7 @@ By default it is the 0,0 position of the correesponding mask.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/roi/creator/fromPoints.js#L11-L37'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/roi/creator/fromPoints.js#L11-L37'>
                                         <span>src/image/roi/creator/fromPoints.js</span>
                                     </a>
 
@@ -14825,7 +14825,7 @@ By default it is the 0,0 position of the correesponding mask.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/roi/creator/fromWaterShed.js#L28-L108'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/roi/creator/fromWaterShed.js#L28-L108'>
                                         <span>src/image/roi/creator/fromWaterShed.js</span>
                                     </a>
 
@@ -14977,7 +14977,7 @@ on 1 component image. This allows to specify a grey scale image on which to appl
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/roi/manager.js#L208-L212'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/roi/manager.js#L208-L212'>
                                         <span>src/image/roi/manager.js</span>
                                     </a>
 
@@ -15054,7 +15054,7 @@ on 1 component image. This allows to specify a grey scale image on which to appl
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/roi/manager.js#L86-L90'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/roi/manager.js#L86-L90'>
                                         <span>src/image/roi/manager.js</span>
                                     </a>
 
@@ -15130,7 +15130,7 @@ on 1 component image. This allows to specify a grey scale image on which to appl
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/roi/manager.js#L193-L201'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/roi/manager.js#L193-L201'>
                                         <span>src/image/roi/manager.js</span>
                                     </a>
 
@@ -15207,7 +15207,7 @@ on 1 component image. This allows to specify a grey scale image on which to appl
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/roi/manager.js#L115-L125'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/roi/manager.js#L115-L125'>
                                         <span>src/image/roi/manager.js</span>
                                     </a>
 
@@ -15285,7 +15285,7 @@ on 1 component image. This allows to specify a grey scale image on which to appl
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/roi/manager.js#L143-L185'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/roi/manager.js#L143-L185'>
                                         <span>src/image/roi/manager.js</span>
                                     </a>
 
@@ -15471,7 +15471,7 @@ on 1 component image. This allows to specify a grey scale image on which to appl
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/roi/manager.js#L292-L297'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/roi/manager.js#L292-L297'>
                                         <span>src/image/roi/manager.js</span>
                                     </a>
 
@@ -15616,7 +15616,7 @@ the parameters 'minCommonBorderRatio' and 'maxCommonBorderRatio'.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/roi/manager.js#L224-L241'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/roi/manager.js#L224-L241'>
                                         <span>src/image/roi/manager.js</span>
                                     </a>
 
@@ -15720,7 +15720,7 @@ for example id, surface, width, height, meanX, meanY.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/roi/manager.js#L51-L56'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/roi/manager.js#L51-L56'>
                                         <span>src/image/roi/manager.js</span>
                                     </a>
 
@@ -15805,7 +15805,7 @@ for example id, surface, width, height, meanX, meanY.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/roi/manager.js#L270-L277'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/roi/manager.js#L270-L277'>
                                         <span>src/image/roi/manager.js</span>
                                     </a>
 
@@ -15899,7 +15899,7 @@ for example id, surface, width, height, meanX, meanY.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/roi/manager.js#L97-L99'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/roi/manager.js#L97-L99'>
                                         <span>src/image/roi/manager.js</span>
                                     </a>
 
@@ -15983,7 +15983,7 @@ for example id, surface, width, height, meanX, meanY.
                     </h3>
 
 
-                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/util/Shape.js#L33-L111'>
+                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/util/Shape.js#L33-L111'>
                         <span>src/util/Shape.js</span>
                     </a>
 
@@ -16118,7 +16118,7 @@ A Shape is by default filled.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/util/Shape.js#L98-L110'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/util/Shape.js#L98-L110'>
                                         <span>src/util/Shape.js</span>
                                     </a>
 
@@ -16181,7 +16181,7 @@ A Shape is by default filled.
                                 <div class='clearfix'>
 
 
-                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/util/Shape.js#L81-L92'>
+                                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/util/Shape.js#L81-L92'>
                                         <span>src/util/Shape.js</span>
                                     </a>
 
@@ -16251,7 +16251,7 @@ A Shape is by default filled.
                     </h3>
 
 
-                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/filter/gradientFilter.js#L3-L6'>
+                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/filter/gradientFilter.js#L3-L6'>
                         <span>src/image/filter/gradientFilter.js</span>
                     </a>
 
@@ -16307,7 +16307,7 @@ A Shape is by default filled.
                     </h3>
 
 
-                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/transform/greyAlgorithms.js#L1-L3'>
+                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/transform/greyAlgorithms.js#L1-L3'>
                         <span>src/image/transform/greyAlgorithms.js</span>
                     </a>
 
@@ -16362,7 +16362,7 @@ A Shape is by default filled.
                     </h3>
 
 
-                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/internal/checks.js#L19-L21'>
+                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/internal/checks.js#L19-L21'>
                         <span>src/image/internal/checks.js</span>
                     </a>
 
@@ -16417,7 +16417,7 @@ A Shape is by default filled.
                     </h3>
 
 
-                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/util/channel.js#L3-L11'>
+                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/util/channel.js#L3-L11'>
                         <span>src/util/channel.js</span>
                     </a>
 
@@ -16481,7 +16481,7 @@ A Shape is by default filled.
                     </h3>
 
 
-                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/vzor-image-js/vzor-image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/transform/mask/thresholdAlgorithms.js#L17-L19'>
+                    <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/image-js/image-js/blob/a2deb5b4c193263d1cb784005d904ec7966f63cb/src/image/transform/mask/thresholdAlgorithms.js#L17-L19'>
                         <span>src/image/transform/mask/thresholdAlgorithms.js</span>
                     </a>
 
