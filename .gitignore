@@ -9,4 +9,3 @@ test/browser/image.js
 coverage
 .eslintcache
 .vscode
-/dist/
