@@ -68,10 +68,11 @@ image-js implements a number of functions to get statistics about an image:
 Contributions to code or documentation are welcome! Here are a few tips on how to
 setup a development environment for image-js.
 
-### Canvas
+### Canvas-prebuilt
 
-The `canvas` native addon library is required for all tests to pass. You can
-follow the instructions to install it on your OS [here](https://github.com/Automattic/node-canvas#installation).  
+The `canvas` native addon library is required for all tests to pass.
+Canvas-prebuilt is a drop-in replacement for canvas that does not require any compiling. 
+No need to install native dependencies.
 
 ## License
 
