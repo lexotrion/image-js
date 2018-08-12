@@ -1,5 +1,5 @@
 {
-  "name": "vzor-image-js",
+  "name": "vzor-vzor-image-js",
   "version": "1.0.0",
   "description": "Image processing and manipulation in JavaScript",
   "keywords": [
@@ -18,11 +18,11 @@
     "Luc Patiny",
     "Michaël Zasso"
   ],
-  "repository": "lexotrion/image-js",
+  "repository": "lexotrion/vzor-image-js",
   "bugs": {
-    "url": "https://github.com/lexotrion/image-js/issues"
+    "url": "https://github.com/lexotrion/vzor-image-js/issues"
   },
-  "homepage": "https://github.com/lexotrion/image-js",
+  "homepage": "https://github.com/lexotrion/vzor-image-js",
   "license": "MIT",
   "main": "./lib/index.js",
   "module": "./src/index.js",
