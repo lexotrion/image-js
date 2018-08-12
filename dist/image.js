@@ -4730,8 +4730,11 @@
 
             c_len = _utf8len[c];
             // skip 5 & 6 byte codes
-            if (c_len > 4) { utf16buf[out++] = 0xfffd;
-                i += c_len - 1; continue; }
+            if (c_len > 4) {
+                utf16buf[out++] = 0xfffd;
+                i += c_len - 1;
+                continue;
+            }
 
             // apply mask on first byte
             c &= c_len === 2 ? 0x1f : c_len === 3 ? 0x0f : 0x07;
@@ -10697,7 +10700,7 @@
     var _resolved = "https://registry.npmjs.org/has-own/-/has-own-1.0.0.tgz";
     var _shasum = "3062246e31cfd887a9a61ee6d38ca57289378cd1";
     var _spec = "has-own@1.0.0";
-    var _where = "/Users/macbook/srv/vzor-image-js";
+    var _where = "/Users/macbook/srv/image-js";
     var author = {
         name: "Aaron Heckmann",
         email: "aaron.heckmann+github@gmail.com"
@@ -23143,8 +23146,19 @@
     }
 
     var _slicedToArray = function() {
-        function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true;
-                _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function(arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+        function sliceIterator(arr, i) {
+            var _arr = [];
+            var _n = true;
+            var _d = false;
+            var _e = undefined;
+            try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) {
+                _d = true;
+                _e = err;
+            } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } }
+            return _arr;
+        }
+        return function(arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } };
+    }();
 
     function order4Points(pts) {
         var tl = 0;
@@ -27261,8 +27275,15 @@
         yellowgreen: [154, 205, 5]
     };
 
-    function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function(sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); }
-            ownKeys.forEach(function(key) { _defineProperty(target, key, source[key]); }); } return target; }
+    function _objectSpread(target) {
+        for (var i = 1; i < arguments.length; i++) {
+            var source = arguments[i] != null ? arguments[i] : {};
+            var ownKeys = Object.keys(source);
+            if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function(sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); }
+            ownKeys.forEach(function(key) { _defineProperty(target, key, source[key]); });
+        }
+        return target;
+    }
 
     function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -29739,18 +29760,32 @@
 
     var priorityQueue = createCommonjsModule(function(module, exports) {
         (function(f) {
-            { module.exports = f(); } })(function() {
+            { module.exports = f(); }
+        })(function() {
             return (function e(t, n, r) {
-                function s(o, u) { if (!n[o]) { if (!t[o]) { var a = typeof commonjsRequire == "function" && commonjsRequire; if (!u && a) return a(o, !0); if (i) return i(o, !0); var f = new Error("Cannot find module '" + o + "'"); throw f.code = "MODULE_NOT_FOUND", f } var l = n[o] = { exports: {} };
-                        t[o][0].call(l.exports, function(e) { var n = t[o][1][e]; return s(n ? n : e) }, l, l.exports, e, t, n, r); } return n[o].exports } var i = typeof commonjsRequire == "function" && commonjsRequire; for (var o = 0; o < r.length; o++) s(r[o]); return s })({
+                function s(o, u) {
+                    if (!n[o]) {
+                        if (!t[o]) { var a = typeof commonjsRequire == "function" && commonjsRequire; if (!u && a) return a(o, !0); if (i) return i(o, !0); var f = new Error("Cannot find module '" + o + "'"); throw f.code = "MODULE_NOT_FOUND", f }
+                        var l = n[o] = { exports: {} };
+                        t[o][0].call(l.exports, function(e) { var n = t[o][1][e]; return s(n ? n : e) }, l, l.exports, e, t, n, r);
+                    }
+                    return n[o].exports
+                }
+                var i = typeof commonjsRequire == "function" && commonjsRequire;
+                for (var o = 0; o < r.length; o++) s(r[o]);
+                return s
+            })({
                 1: [function(_dereq_, module, exports) {
                     var AbstractPriorityQueue, ArrayStrategy, BHeapStrategy, BinaryHeapStrategy, PriorityQueue,
-                        extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; }
+                        extend = function(child, parent) {
+                            for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; }
 
                             function ctor() { this.constructor = child; }
                             ctor.prototype = parent.prototype;
                             child.prototype = new ctor();
-                            child.__super__ = parent.prototype; return child; },
+                            child.__super__ = parent.prototype;
+                            return child;
+                        },
                         hasProp = {}.hasOwnProperty;
 
                     AbstractPriorityQueue = _dereq_('./PriorityQueue/AbstractPriorityQueue');
@@ -32111,7 +32146,7 @@ return d[d.length-1];};return ", funcName].join("");
      *      The values may be 1 for a binary image (mask), 8 for a normal image (each
      *      channel contains values between 0 and 255) and 16 for scientific images
      *      (each channel contains values between 0 and 65535).
-     *      The png library and tiff library included in vzor-image-js allow to deal correctly with
+     *      The png library and tiff library included in image-js allow to deal correctly with
      *      8 and 16 bit depth images.
      * * position : an array of 2 elements that allows to define a relative position
      *      to a parent image. This will be used in a crop or in the management
@@ -32136,8 +32171,8 @@ return d[d.length-1];};return ", funcName].join("");
      *
      * @example
      * // JavaScript code using Node.js to get some info about the image.
-     * // We load the library that was installed using 'npm install vzor-image-js'
-     * const { Image } = require('vzor-image-js');
+     * // We load the library that was installed using 'npm install image-js'
+     * const { Image } = require('image-js');
      *
      * // Loading an image is asynchronous and will return a Promise.
      * Image.load('cat.jpg').then(function (image) {
@@ -32152,7 +32187,7 @@ return d[d.length-1];};return ", funcName].join("");
      *
      * @example
      * // Convert an image to greyscale
-     * const { Image } = require('vzor-image-js');
+     * const { Image } = require('image-js');
      *
      * Image.load('cat.jpg').then(function (image) {
      *   var grey = image.grey();
@@ -32161,7 +32196,7 @@ return d[d.length-1];};return ", funcName].join("");
      *
      * @example
      * // Split an RGB image in its components
-     * const { Image } = require('vzor-image-js');
+     * const { Image } = require('image-js');
      *
      * Image.load('cat.jpg').then(function (image) {
      *   var components = image.split();
@@ -32173,11 +32208,11 @@ return d[d.length-1];};return ", funcName].join("");
      *
      * @example
      * // For this example you will need the picture of an ecstasy pill that is available on
-     * // wget https://raw.githubusercontent.com/vzor-image-js/core/854e70f50d63cc73d2dde1d2020fe61ba1b5ec05/test/img/xtc.png // the goal is to isolate the picture and to get a RGB histogram of the pill.
+     * // wget https://raw.githubusercontent.com/image-js/core/854e70f50d63cc73d2dde1d2020fe61ba1b5ec05/test/img/xtc.png // the goal is to isolate the picture and to get a RGB histogram of the pill.
      * // Practically this allows to classify pills based on the histogram similarity
      * // This work was published at: http://dx.doi.org/10.1016/j.forsciint.2012.10.004
      *
-     * const { Image } = require('vzor-image-js');
+     * const { Image } = require('image-js');
      *
      * const image = await Image.load('xtc.png');
      *
@@ -32220,7 +32255,7 @@ return d[d.length-1];};return ", funcName].join("");
      *   scale: 0.7   // we will scale down the mask to take just the center of the pill and avoid border effects
      * });
      *
-     * // vzor-image-js remembers the parent of the image and the relative
+     * // image-js remembers the parent of the image and the relative
      * // position of a derived image. This is the case for a crop as
      * // well as for Roi
      *
