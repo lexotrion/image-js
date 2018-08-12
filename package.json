@@ -1,6 +1,6 @@
 {
   "name": "vzor-image-js",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Image processing and manipulation in JavaScript",
   "keywords": [
     "image",
