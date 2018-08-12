@@ -6,7 +6,7 @@ var Image = require('../..');
 // we will create a stack and load all the images
 
 var stack = new Image.Stack();
-var baseName = "/Users/lpatiny/git/image-js/core/test/img/moon/crop/BloodMoonTest-";
+var baseName = "/Users/lpatiny/git/vzor-image-js/core/test/img/moon/crop/BloodMoonTest-";
 var images = [];
 var toLoad = [];
 for (var i = 1; i <= 8; i++) {
